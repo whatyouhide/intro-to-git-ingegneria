@@ -15,21 +15,10 @@ class: center, middle
 ### @whatyouhide
 ##### Web developer  
 
-Interrompete per qualsiasi domanda, le domande mi gasano
-
 ???
 
-Sono anche un maestro delle arti oscure di git.
-
-
-
----
-
-class: left, middle
-
-# Obiettivi:
-
-- Le liste di obiettivi all'inizio delle slide non servono a nulla
+- Sono anche un maestro delle arti oscure di git.
+- Interrompete per qualsiasi domanda, le domande mi gasano
 
 
 
@@ -57,3 +46,31 @@ Git è un *distributed version control system*
 
 --
 - open source
+
+
+
+---
+name: installation-title
+class: center, middle
+
+# Installazione
+
+
+
+---
+name: installation-links
+class: left, middle
+### Linux
+
+```bash
+apt-get install git-core    # *buntu, Debian
+yum install git-core        # Fedora
+```
+
+### OS X
+
+http://git-scm.com/downloads
+
+### ...Windows?
+
+http://msysgit.github.com/
