@@ -1,0 +1,55 @@
+@import fonts/style.css
+
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz)
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic)
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic)
+
+// Colors.
+$standout-bg: #849200
+$links: #776a99
+
+// Style the main dom elements.
+body
+  font-family: 'Source Sans Pro'
+
+h1, h2, h3
+  font-family: 'Source Sans Pro'
+  font-weight: normal
+
+a, a:visited
+  color: $links
+  text-decoration: none
+  font-family: 'Source Sans Pro'
+
+// Code.
+.remark-code, .remark-inline-code
+  font-family: 'Inconsolata-g', monospace
+
+.remark-code
+  font-size: 14px
+
+.remark-inline-code
+  font-size: 16px
+
+// Hide the slide number (bottom right).
+.remark-slide-number
+  display: none
+
+// Custom classes.
+
+// The cover slide with a big git command in it.
+.git-command-cover
+  background: #435356
+  color: white
+  code
+    font-size: 100px
+
+.more-padded
+  padding-top: 4.5em
+
+// Per slide styles.
+#slide-installation-title
+  background: $standout-bg
+  color: white
+  h1
+    font-size: 115px
