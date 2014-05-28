@@ -1,4 +1,4 @@
-@import fonts/style.css
+@import fonts/fonts.css
 
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz)
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic)
@@ -7,6 +7,7 @@
 // Colors.
 $standout-bg: #849200
 $links: #776a99
+
 
 // Style the main dom elements.
 body
@@ -18,22 +19,32 @@ h1, h2, h3
 
 a, a:visited
   color: $links
-  text-decoration: none
   font-family: 'Source Sans Pro'
+  text-decoration: none
+
+
+// The generic slide.
+.remark-slide-content
+  font-size: 24px
+  padding: 3em
 
 // Code.
 .remark-code, .remark-inline-code
   font-family: 'Inconsolata-g', monospace
 
 .remark-code
-  font-size: 14px
+  font-size: 15px
 
 .remark-inline-code
   font-size: 16px
+  li &, p &
+    color: #425987
+
 
 // Hide the slide number (bottom right).
 .remark-slide-number
   display: none
+
 
 // Custom classes.
 
@@ -44,8 +55,27 @@ a, a:visited
   code
     font-size: 100px
 
+// The cover slide where we introduce a new concept.
+.concept-cover
+  background: red
+  color: white
+  h1
+    font-size: 120px
+
+
 .more-padded
   padding-top: 4.5em
+  li
+    padding-top: 1em
+    padding-bottom: 1em
+
+.less-padded
+  padding: 1em
+
+// Image which have to be inside the canvas.
+.max-width-img img
+  max-width: 100%
+
 
 // Per slide styles.
 #slide-installation-title
