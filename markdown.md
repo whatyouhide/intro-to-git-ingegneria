@@ -185,23 +185,44 @@ class: middle, max-width-img, less-padded
 
 
 ---
+class: center, middle, concept-cover
+# Stati dei file
+
+
+
+
+
+---
 class: more-padded
 
 In una repository, i file possono trovarsi in tre *stati*:
 
---
-- **unmodified**: il file non è stato modificato dall'ultimo commit
---
-
-- **non staged**: il file è visibile a git ed è stato modificato dall'ultimo
-  commit, ma non è ancora *candidato* ad essere committato
 
 --
-- **staged**: il file è visibile a git, modificato dall'ultimo commit e i suoi
-  cambiamenti verranno registrati nel commit successivo
+- **unmodified**
+
+???
+Il file non è stato modificato dall'ultimo commit
 
 --
-- **untracked**: il file è invisibile a git
+- **non staged**
+
+???
+Il file è visibile a git ed è stato modificato dall'ultimo
+commit, ma non è ancora *candidato* ad essere committato
+
+--
+- **staged**
+
+???
+Il file è visibile a git, modificato dall'ultimo commit e i suoi
+cambiamenti verranno registrati nel commit successivo
+
+--
+- **untracked**
+
+???
+Il file è invisibile a git
 
 
 
