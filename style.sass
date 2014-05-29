@@ -33,9 +33,11 @@ a, a:visited
   font-size: 15px
 
 .remark-inline-code
-  font-size: 16px
   li &, p &
+    font-size: 16px
     color: #425987
+  h2 &
+    font-size: 40px
 
 
 // Hide the slide number (bottom right).
@@ -54,24 +56,28 @@ a, a:visited
 
 // The cover slide where we introduce a new concept.
 .concept-cover
-  background: red
+  background: #847639
   color: white
   h1
     font-size: 120px
 
-
+// A slide with less content, hence with more whitespace.
 .more-padded
   padding-top: 4.5em
+  img
+    padding-top: 1.5em
   li
     padding-top: 1em
     padding-bottom: 1em
 
+// A slide with more room for images and other stuff.
 .less-padded
   padding: 1em
 
 // Image which have to be inside the canvas.
 .max-width-img img
   max-width: 100%
+  max-height: 80%
 
 
 // Per slide styles.
@@ -80,3 +86,11 @@ a, a:visited
   color: white
   h1
     font-size: 115px
+
+.sha1-intro
+  color: #946824
+  font-size: 35px
+  margin-top: 25%
+
+img[alt="single-commit"]
+  width: 63%

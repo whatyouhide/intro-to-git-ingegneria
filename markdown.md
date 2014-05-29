@@ -6,24 +6,6 @@ class: center, middle
 
 
 
-
----
-name: whoami
-class: center, middle
-
-# Andrea Leopardi  
-### an.leopardi@gmail.com  
-### @whatyouhide
-##### Web developer  
-
-???
-- Sono anche un maestro delle arti oscure di git.
-- Interrompete per qualsiasi domanda, le domande mi gasano
-
-
-
-
-
 ---
 class: center, middle
 
@@ -47,54 +29,11 @@ Git è un *distributed version control system*
 --
 #### efficiente (spaziotempo)
 
---
-#### open source!
-
-
-
-
-
----
-name: installation-cover
-class: center, middle
-
-# Installazione
-
-
-
-
-
----
-name: installation-links
-class: left, middle
-
-### Linux
-
-```bash
-apt-get install git-core    # *buntu, Debian
-yum install git-core        # Fedora
-```
-
-### OS X
-
-http://git-scm.com/downloads
-
-### ...Windows?
-
-http://msysgit.github.com/
-
-???
-Ovviamente git è molto unix-oriented  
-Funziona alla perfezione anche su Windows ma la sua filosofia e' Unix  
-Fare una cosa e farla bene (ogni subcommand)
-
-
 
 
 
 ---
 # Come funziona git?
-
 
 
 
@@ -113,15 +52,8 @@ cambiamenti.
 In questo modo si mantiene una storia di tutti i cambiamenti effettuati nel
 progetto.
 
-
-
-
-
----
-class: center, middle, concept-cover
-
-# commit
-
+--
+Il cuore di git sono i *commit*.
 
 
 
@@ -147,47 +79,38 @@ Ha associati:
 
 
 
-
 ---
 class: middle, max-width-img, less-padded
-
 ![what-is-a-commit-1](img/what-is-a-commit-1.svg)
 
 
 
 
-
 ---
 class: middle, max-width-img, less-padded
-
 ![what-is-a-commit-2](img/what-is-a-commit-2.svg)
 
 
 
 
-
 ---
 class: middle, max-width-img, less-padded
-
 ![what-is-a-commit-3](img/what-is-a-commit-3.svg)
 
 
 
 
-
 ---
 class: middle, max-width-img, less-padded
-
 ![what-is-a-commit-4](img/what-is-a-commit-4.svg)
-
 
 
 
 
 ---
 class: center, middle, concept-cover
-# Stati dei file
 
+# Stati dei file
 
 
 
@@ -197,38 +120,33 @@ class: more-padded
 
 In una repository, i file possono trovarsi in tre *stati*:
 
-
 --
 - **unmodified**
-
 ???
 Il file non è stato modificato dall'ultimo commit
 
 --
 - **non staged**
-
 ???
 Il file è visibile a git ed è stato modificato dall'ultimo
 commit, ma non è ancora *candidato* ad essere committato
 
 --
 - **staged**
-
 ???
 Il file è visibile a git, modificato dall'ultimo commit e i suoi
 cambiamenti verranno registrati nel commit successivo
 
 --
 - **untracked**
-
 ???
 Il file è invisibile a git
 
 
 
 
-
 ---
+<!-- TODO Ce la metto questa slide o lo faccio vedere nella demo? -->
 class: middle
 
 ```
@@ -254,7 +172,6 @@ Untracked files:
 
 
 
-
 ---
 class: more-padded
 
@@ -271,41 +188,166 @@ Ricordarsi di non usare `g` e `c`.
 
 
 
-
 ---
-name: git-init-cover
-class: center, middle, git-command-cover
+class: middle, center, concept-cover
 
-# `git init`
-
+# commit
 
 
 
 
 ---
-class: more-padded
+class: center, more-padded
 
-Inizializza una repository git:
+Identificato univocamente da uno SHA1 dei file presenti nella repository.
 
-```
-ironmac ~/Code/git-talk-ingegneria/tmp → git init
-Initialized empty Git repository in /Users/ironmac/Code/git-talk-ingegneria/tmp/.git/
-```
 
---
-Crea semplicemente una directory `.git` nella directory corrente:
+???
+Spiegare cosa è uno SHA1:
+- 40 caratteri
+- esadecimali
 
-```
-ironmac ~/Code/git-talk-ingegneria/tmp → ls -la
-total 0
-drwxr-xr-x   3 ironmac  staff  102 May 27 18:44 .
-drwxr-xr-x  14 ironmac  staff  476 May 27 18:34 ..
-drwxr-xr-x   9 ironmac  staff  306 May 27 18:44 .git
-```
+Git è capace di capire quando cambia qualsiasi cosa grazie a questo SHA1.
 
 --
-Si può facilmente rimuovere git da una repository:
+.sha1-intro[
+b858a87c07b04c4568f51b0dce655f78d73c02b3
+]
 
-```
-ironmac ~/Code/git-talk-ingegneria/tmp → rm -rf .git
-```
+
+
+
+---
+class: center, middle
+![single-commit](img/single-commit.svg)
+
+
+
+
+---
+class: center, middle, concept-cover
+# Branching
+
+
+
+
+---
+class: center, middle
+
+Un branch è un *puntatore a un commit* che permette di sviluppare più versioni
+della stessa repository parallelamente.
+
+
+
+
+---
+class: center, middle
+![wat](img/funny/wat.png)
+
+
+
+
+---
+class: middle, center
+![](img/branching-1.png)
+
+???
+Di solito il branch principale si chiama `master`.
+
+
+
+
+---
+class: center, more-padded
+
+In ogni momento mi trovo in un branch: quello puntato da `HEAD`.
+![](img/branching-2.1.png)
+
+???
+`HEAD` è un puntatore a branch che indica a git su quale branch mi trovo.
+
+Committare in un branch significa mettere il commit puntato dal branch corrente
+come padre del nuovo commit e spostare il puntatore del branch sul nuovo commit.
+
+
+
+
+---
+class: more-padded, center
+
+Ora branchamo per creare, ad esempio, una nuova feature:
+![](img/branching-2.png)
+
+
+
+
+---
+![](img/branching-3.png)
+
+???
+Avanziamo in `post-autosave` facendo due nuovi commit.
+
+
+
+
+---
+![](img/branching-4.png)
+
+???
+Nel frattempo riceviamo un bug report che ci costringe a fixare un bug urgente.
+Torniamo su master, branchamo di nuovo e committiamo una volta nel branch `fix`.
+
+
+
+
+---
+class: middle, center
+
+### `post-autosave` e `fix` sono **diverging branches**.
+
+
+
+
+---
+class: max-width-img, center
+
+## Merge di `fix` in `master`: fast-forward
+![](img/branching-5.png)
+
+???
+Siamo soddisfatti del fix nel branch `fix`, ora vogliamo far sì che esso sia
+visibile anche in `master`.
+
+**Fast-forward** significa spostare il puntatore del branch
+in cui si mergia nel punto dove si trova il puntatore del branch che viene
+mergiato.
+
+
+
+
+---
+class: less-padded, max-width-img, middle
+![](img/branching-6.png)
+
+???
+Ora torniamo su `post-autosave` e facciamo un altro commit per finire
+la feature.
+
+
+
+
+---
+class: max-width-img, more-padded
+
+Torniamo su `master` e mergiamo con `post-autosave`. 
+![](img/branching-7.png)
+
+???
+Git trova l'antenato comune dei due commit e lo rende padre di un nuovo commit
+che rappresenta il merge di branch che sono **diverged**.
+
+
+
+
+---
+<!-- TODO merge conflict -->
