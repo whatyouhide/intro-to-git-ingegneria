@@ -4,6 +4,7 @@
 // Colors.
 $standout-bg: #849200
 $links: #776a99
+$git-command-cover-bg: #1C76DA
 
 
 // Style the main dom elements.
@@ -56,7 +57,7 @@ a, a:visited
 
 // The cover slide where we introduce a new concept.
 .concept-cover
-  background: #847639
+  background: $git-command-cover-bg
   color: white
   h1
     font-size: 120px
@@ -87,6 +88,15 @@ a, a:visited
   h1
     font-size: 115px
 
+#slide-bitbucket-logo
+  background: #1f5182
+
+#slide-gitshots
+  background: black
+  color: white
+  video
+    width: 100%
+
 .sha1-intro
   color: #946824
   font-size: 35px
@@ -94,3 +104,6 @@ a, a:visited
 
 img[alt="single-commit"]
   width: 63%
+
+img[alt="you-dont-use-github"]
+  width: 72%

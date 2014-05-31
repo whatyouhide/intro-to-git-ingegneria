@@ -350,4 +350,252 @@ che rappresenta il merge di branch che sono **diverged**.
 
 
 ---
-<!-- TODO merge conflict -->
+class: center, middle, concept-cover
+
+# Remotes
+
+
+
+
+---
+Versioni di una repository che sono hostate su server remoti.
+
+
+--
+Dal remote si può:
+
+- **clone**
+- **pull**
+- **push**
+
+???
+- **clone**: cloniamo la repository remota in locale (compresa tutta la storia
+  della repository)
+- **pull**: quando facciamo `git pull` dalla nostra repository locale
+  scarichiamo in locale tutti i cambiamenti avvenuti nella repository
+  dall'ultima volta che abbiamo pullato
+- **push**: uploadiamo i cambiamenti (commit) che abbiamo fatto in locale
+  (dall'ultimo push) sul server remoto
+
+
+
+
+---
+# Vantaggi di hostare repository su un remote server
+
+--
+- Backup
+
+???
+Avendo la repository (ripeto, con tutta la sua storia) su un remote server
+garantisce un backup della repository che abbiamo in locale.
+
+--
+- Condivisione tra più dispositivi
+
+???
+Dropbox è comodo, ma non possiamo usarlo per condividere una repo tra più device
+perché non gestisce bene la scrittura simultanea.
+
+--
+- Collaborazione (!)
+
+???
+Quando si partecipa a un progetto con più di 2 developers (quando non si fa?) è
+indispensabile condividere il codice avendo accesso a una repository comune.
+
+
+
+
+---
+class: middle, center
+# `origin`
+
+???
+Di solito il remote principale si chiama `origin`.
+I branch remoti vengono prifissati da `origin/`.
+
+
+
+
+---
+class: middle, center, max-width-img
+
+![](img/remote-branches.png)
+
+
+
+
+---
+class: middle, center, max-width-img
+
+# `push`/`pull`
+
+![](img/remote-branches-push-pull.png)
+
+???
+Sia pull che push sortiscono un effetto simile, ovvero spostare il puntatore
+`origin/master`.
+La differenza:
+- `pull`: sposta il puntatore locale `origin/master` dove esso si trova
+  effettivamente sul remote
+- `push`: sposta il puntatore `master` sul remote `origin` dove si trova il
+  puntatore `master` locale (e aggiorna `origin/master` in locale ovviamente)
+
+
+
+
+---
+class: middle, center
+
+![](img/github-logo.png)
+
+???
+GitHub è il più famoso hosting service che usa git come VCS.
+
+È gratuito per progetti **open source**, mentre richiede un abbonamento mensile
+per hostare repository private.
+
+È lo standard de facto per l'open source. È un modo fantastico di imparare git e
+allo stesso tempo imparare molto da progetti open source.
+
+### Piccola demo di GitHub
+
+- Andare sulla homepage
+- `dotfiles`: io su GH ci tengo tutte le configurazioni del mio computer (dove ho
+  400+ commits!)
+- `git-talk-ingegneria`: tutte le slide di questo seminario sono su GitHub
+
+È diventato talmente lo standard de facto che quando qualcuno dice che non hosta
+le sue repo su GitHub facciamo tutti questa faccia...
+
+
+
+
+---
+class: middle, center
+
+![you-dont-use-github](img/funny/you-dont-use-github.gif)
+
+
+
+
+---
+name: bitbucket-logo
+class: middle, center
+
+![](img/bitbucket-logo.png)
+
+???
+BitBucket è molto simile a GitHub ma permette gratuitamente un numero limitato
+di repository private: probabilmente userete più spesso questo.
+
+
+
+
+---
+class: center, middle, concept-cover
+
+# Hands down
+
+
+
+---
+class: middle, center, command-cover
+`git clone` + `git remote`
+
+---
+class: middle, center, command-cover
+`git status`
+
+---
+class: middle, center, command-cover
+`git add`
+
+---
+class: middle, center, command-cover
+`git commit`
+
+???
+`git commit --amend`
+
+---
+class: middle, center, command-cover
+`git push`
+
+---
+class: middle, center, command-cover
+`git pull`
+
+???
+Farlo sulla repo `mc`, e far vedere un merge conflict.
+
+
+---
+class: middle, center, command-cover
+`git checkout` + `git branch`
+
+---
+class: middle, center, command-cover
+`git merge`
+
+---
+class: middle, center, command-cover
+`git stash`
+
+???
+# Use case
+Siamo in `fix` con dei cambiamenti, vogliamo pullare `master`.
+- **stashamo** i cambiamenti
+- `git checkout master && git pull`
+- `git checkout fix`
+- `git stash apply`
+
+---
+class: middle, center, command-cover
+`git log`
+
+
+
+
+---
+class: middle, center, concept-cover
+# Advanced concepts
+
+???
+Questi concetti sono avanzati, però vale la pena approfondirli.
+
+
+
+
+---
+class: more-paddedd
+
+- `git rebase`
+
+--
+- Tags
+
+--
+- `git reset [--hard|--soft]`
+
+--
+- Hooks
+
+???
+Use case degli hooks: c'è un hook che permette di eseguire uno script ogni volta
+che l'utente fa un commit. Combinato con un programmino che scatta foto con la
+webcam, si ottiene un **gitshot**. (continua)
+
+
+
+
+---
+name: gitshots
+class: center
+
+450 commit - 3 mesi - 25 foto al secondo
+
+<video controls>
+    <source src="gitshots.webm"/>
+</video>
