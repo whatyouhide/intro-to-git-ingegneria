@@ -1,21 +1,16 @@
 name: cover
 class: center, middle
-
-<img src="img/git-logo.png" width="400" />
+![git-logo](img/git-logo.png)
 
 
 
 
 ---
-class: center, middle
-
 # Cos'è git?
 
-???
-# Survey
-- quanti conoscono git?
-- quanti conoscono svn?
 
+???
+- **Survey**: quanti conoscono git?
 
 --
 Git è un *distributed version control system*
@@ -27,154 +22,154 @@ Git è un *distributed version control system*
 #### veloce
 
 --
-#### efficiente (spaziotempo)
+#### potente
 
 
 
 
 ---
-# Come funziona git?
+layout: true
+# Centralized Version Control Systems (svn)
 
+---
+Vantaggi (rispetto a sistemi più primitivi)
+- Ogni developer si riferisce alla stessa versione del progetto
+- Ogni developer nel progetto ha un'idea del lavoro che stanno facendo gli altri
+- Gli amministratori del progetto hanno controllo sulla repository
+
+---
+Svantaggi (rispetto a VCS distribuiti)
+- Il server dove è hostata la repository è un single point of failure: 
+    - **va down** nessun download/upload di codice
+    - **necessita backup** altrimenti si potrebbe perdere tutta la storia del
+        progetto
+- Ogni developer, ogni volta che vorrà partecipare a un progetto, dovrà
+    downloadare **tutta** la repository alla versione corrente + modificare +
+    uploadare di nuovo
 
 
 
 ---
-class: center, middle
+layout: true
+# Distributed VCS (git, mercurial)
 
-Serve a fare istantanee (*snapshot*) di insiemi di file.
+---
 
+Vantaggi
+- Ogni client è un mirror della repository
+- Clonare una repository clona *tutta* la sua storia
+- Ogni client è un "backup" della repository → probabilità ~0 di perdere dati
+- Quando si uploada/downloada codice, si muovono solo i cambiamenti
 
-???
-Git tiene traccia **intelligentemente** solo dei file cambiati e solo dei
-cambiamenti.
+---
+Svantaggi
+
 
 --
-In questo modo si mantiene una storia di tutti i cambiamenti effettuati nel
-progetto.
+![](img/funny/not-a-single-one.jpg)
+
+
+
+
+
+
+<!-- Archittettura di git --------------------------------------------------->
+
+---
+layout: false
+class: concept-cover, middle, center
+# Architettura
+
+
+---
+## Snapshot, non differenze
+
+SVN → lista di cambiamenti applicati ai file.
+
+Git → *snapshot* della repo: fotografie (mini filesystem) della repository in un
+certo momento.
+
+---
+class: middle, max-width-img
+![](img/snapshots-1.png)
+
+---
+class: middle, max-width-img
+![](img/snapshots-2.png)
+
+---
+class: middle, max-width-img
+![](img/snapshots-3.png)
+
+---
+class: middle, max-width-img
+![](img/snapshots-4.png)
+
+
+
+---
+## Quasi tutte le operazioni sono locali
+
+Non si ha quasi mai bisogno della rete per svolgere operazioni.
+
+---
+## Git ha *integrity*
 
 --
-Il cuore di git sono i *commit*.
-
-
-
-
----
-Un commit è uno snapshot della repository.
-
-
-???
-Muovendomi da un commit a un altro posso tornare esattamente allo stato della
-repository a un dato commit.
-
+- In git viene fatto un checksum (SHA1) di qualsiasi cosa (in modo da poter
+    identificare univocamente quel qualcosa)
 
 --
-Un commit è lo stato della repository in un certo momento.
-
+- È impossibile cambiare il contenuto dei file senza che git se ne accorga
 
 --
-Ha associati:
-- autore
-- messaggio
-
-
-
-
----
-class: middle, max-width-img, less-padded
-![what-is-a-commit-1](img/what-is-a-commit-1.svg)
-
-
+.sha1[
+b858a87c07b04c4568f51b0dce655f78d73c02b3
+]
 
 
 ---
-class: middle, max-width-img, less-padded
-![what-is-a-commit-2](img/what-is-a-commit-2.svg)
+## Git (quasi sempre) aggiunge solo dati
+
+Ci sono poche operazioni (spesso sconsigliate/pericolose) che costringono git a
+*cancellare* dati.
+
+In genere qualsiasi operazione (anche di cancellazione) **aggiunge** dati alla
+repository.
 
 
 
 
----
-class: middle, max-width-img, less-padded
-![what-is-a-commit-3](img/what-is-a-commit-3.svg)
 
 
-
-
----
-class: middle, max-width-img, less-padded
-![what-is-a-commit-4](img/what-is-a-commit-4.svg)
-
-
-
+<!-- Stati dei file ---------------------------------------------------------->
 
 ---
 class: center, middle, concept-cover
-
 # Stati dei file
 
 
 
-
 ---
 class: more-padded
-
 In una repository, i file possono trovarsi in tre *stati*:
 
 --
 - **unmodified**
-???
-Il file non è stato modificato dall'ultimo commit
 
 --
 - **non staged**
-???
-Il file è visibile a git ed è stato modificato dall'ultimo
-commit, ma non è ancora *candidato* ad essere committato
 
 --
 - **staged**
-???
-Il file è visibile a git, modificato dall'ultimo commit e i suoi
-cambiamenti verranno registrati nel commit successivo
 
 --
 - **untracked**
-???
-Il file è invisibile a git
-
-
-
-
----
-<!-- TODO Ce la metto questa slide o lo faccio vedere nella demo? -->
-class: middle
-
-```
-ironmac ~/Code/git-talk-ingegneria/repos/file-states → git status
-On branch master
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-        modified:   hello.rb
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-        modified:   README.md
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-        LICENSE.txt
-```
-
 
 
 
 ---
 class: more-padded
-
 ## Come cambio stato?
 
 - I file sono **untracked** quando li aggiungo nella repository
@@ -188,38 +183,30 @@ Ricordarsi di non usare `g` e `c`.
 
 
 
+
+
+<!-- Commit ------------------------------------------------------------------>
+
 ---
 class: middle, center, concept-cover
-
 # commit
-
-
-
-
----
-class: center, more-padded
-
-Identificato univocamente da uno SHA1 dei file presenti nella repository.
-
-
-???
-Spiegare cosa è uno SHA1:
-- 40 caratteri
-- esadecimali
-
-Git è capace di capire quando cambia qualsiasi cosa grazie a questo SHA1.
-
---
-.sha1-intro[
-b858a87c07b04c4568f51b0dce655f78d73c02b3
-]
-
-
 
 
 ---
 class: center, middle
-![single-commit](img/single-commit.svg)
+![single-commit](img/single-commit.png)
+
+???
+- sha1
+- puntatore al parent
+- autore <email>
+- ptr al tree con le modifiche
+- messaggio
+
+
+
+
+
 
 
 
@@ -228,7 +215,8 @@ class: center, middle
 class: center, middle, concept-cover
 # Branching
 
-
+???
+Branchare in git è supersemplice, velocissimo e consigliatissimo.
 
 
 ---
@@ -381,33 +369,6 @@ Dal remote si può:
 
 
 ---
-# Vantaggi di hostare repository su un remote server
-
---
-- Backup
-
-???
-Avendo la repository (ripeto, con tutta la sua storia) su un remote server
-garantisce un backup della repository che abbiamo in locale.
-
---
-- Condivisione tra più dispositivi
-
-???
-Dropbox è comodo, ma non possiamo usarlo per condividere una repo tra più device
-perché non gestisce bene la scrittura simultanea.
-
---
-- Collaborazione (!)
-
-???
-Quando si partecipa a un progetto con più di 2 developers (quando non si fa?) è
-indispensabile condividere il codice avendo accesso a una repository comune.
-
-
-
-
----
 class: middle, center
 # `origin`
 
@@ -503,45 +464,18 @@ class: center, middle, concept-cover
 ---
 class: middle, center, command-cover
 `git clone` + `git remote`
-
----
-class: middle, center, command-cover
 `git status`
-
----
-class: middle, center, command-cover
 `git add`
-
----
-class: middle, center, command-cover
 `git commit`
-
-???
 `git commit --amend`
-
----
-class: middle, center, command-cover
 `git push`
-
----
-class: middle, center, command-cover
 `git pull`
-
-???
-Farlo sulla repo `mc`, e far vedere un merge conflict.
-
-
----
-class: middle, center, command-cover
 `git checkout` + `git branch`
-
----
-class: middle, center, command-cover
 `git merge`
-
----
-class: middle, center, command-cover
 `git stash`
+`git log`
+
+
 
 ???
 # Use case
@@ -553,7 +487,6 @@ Siamo in `fix` con dei cambiamenti, vogliamo pullare `master`.
 
 ---
 class: middle, center, command-cover
-`git log`
 
 
 
@@ -566,11 +499,8 @@ class: middle, center, concept-cover
 Questi concetti sono avanzati, però vale la pena approfondirli.
 
 
-
-
 ---
 class: more-paddedd
-
 - `git rebase`
 
 --
@@ -586,8 +516,6 @@ class: more-paddedd
 Use case degli hooks: c'è un hook che permette di eseguire uno script ogni volta
 che l'utente fa un commit. Combinato con un programmino che scatta foto con la
 webcam, si ottiene un **gitshot**. (continua)
-
-
 
 
 ---
