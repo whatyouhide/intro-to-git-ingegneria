@@ -74,7 +74,7 @@ Vantaggi (rispetto a sistemi più primitivi)
 Svantaggi (rispetto a VCS distribuiti)
 
 --
-- Il server è un single point of failure →
+- Il server è un single point of failure
     * **va down**: nessun download/upload di codice
     * **necessita backup**: rischio di perdere tutta la history del progetto
 
@@ -235,7 +235,7 @@ layout: true
 ---
 layout: false
 class: middle, center, concept-cover
-# commit
+# Commit
 
 
 ---
@@ -299,8 +299,8 @@ come padre del nuovo commit e spostare il puntatore del branch sul nuovo commit.
 
 
 ---
-class: more-padded, center
-Ora branchamo per creare, ad esempio, una nuova feature:
+class: less-padded-top, center
+Ora branchamo per creare, ad esempio, una nuova feature: `post-autosave`
 
 ![](img/branching-2.png)
 
@@ -316,7 +316,7 @@ Avanziamo in `post-autosave` facendo due nuovi commit
 
 ---
 class: less-padded-top
-Bug report per un bug urgente: torniamo su `master`, branchamo e
+*Bug report* per un bug urgente: torniamo su `master`, branchamo e
 committiamo una volta nel branch `fix`
 
 ![](img/branching-4.png)
@@ -327,7 +327,7 @@ committiamo una volta nel branch `fix`
 
 
 ---
-class: max-width-img, less-padded
+class: max-width-img, less-padded-top
 ## Merge di `fix` in `master`: fast-forward
 
 Abbiamo finito in `fix`, vogliamo rendere disponibile il fix anche in `master`:
@@ -385,20 +385,16 @@ I branch remoti vengono prifissati da `origin/`: `origin/master`, `origin/fix`.
 
 
 ---
-class: middle, center, max-width-img
-![remote-branches](img/remote-branches.png)
-
-
-
----
 class: middle, max-width-img, less-padded-top
 # `push`/`pull`
 
 - `push`: upload dei cambiamenti in locale su un remote
 - `pull`: download dei cambiamenti su un remote in locale
 
-![remote-branches-push-pull](img/remote-branches-push-pull.png)
-
+???
+Operazione chiave: si muove `origin/{branch}`: se pulliamo quello locale si
+aggiorna a quello remoto, se pushamo quello remoto viene aggiornato a quello
+locale.
 
 
 ---
@@ -445,26 +441,30 @@ essere reso open source per questioni di vulnerabilità/proprietà.
 class: center, middle, concept-cover
 # Hands down
 
+
+---
+class: less-padded-top
+# Installazione:
+
+### Linux
+```bash
+apt-get install git-core # *buntu, debian
+yum install git-core     # fedora
+```
+
+### OS X
+http://git-scm.com/download/mac
+
+### ...Windows?
+http://msysgit.github.io/
+
+
+---
+class: center, middle, concept-cover
+# Demo
+
 ???
-
-- `git init`
-- `git status`
-- `git add`
-- `git commit`
-- `git commit --amend`
-- `git push`
-- `git pull`
-- `git checkout` + `git branch`
-- `git merge`
-- `git clone` + `git remote`
-- `git stash`
-- `git log`
-
-# Per iniziare
-- andare in `repo/`
-- `mkdir awesome-app && cd awesome-app`
-- `vim greeter.js` e scriverci dentro:
-
+### Roba da scrivere in JS
 ```javascript
 Greeter = (function () {
   'use strict';
@@ -505,11 +505,11 @@ class: more-padded, center
 
 
 --
-Tags
+`git reset [--hard|--soft]`
 
 
 --
-`git reset [--hard|--soft]`
+Tags
 
 
 --
@@ -529,9 +529,12 @@ name: questions
 
 ?
 
+???
+Domande?
+
+
 ---
 class: max-width-img, center, middle
 ## Grazie!
 
 ![](img/thank-you.jpg)
-
