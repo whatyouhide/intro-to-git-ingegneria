@@ -3,9 +3,31 @@ class: center, middle
 ![git-logo](img/git-logo.png)
 
 
+---
+name: who-am-i
+class: center, middle
+# Andrea Leopardi
+
+.email[
+mailto:an.leopardi@gmail.com
+]
+.twitter[
+@whatyouhide
+]
+.github-username[
+https://github.com/whatyouhide
+]
+
+???
+Sono uno studente di Informatica e lavoro come sviluppatore web
+(frontend + backend, Rails).
+
+Per favore interrompete per farmi domande.
+
 
 
 ---
+class: center
 # Cos'è git?
 
 
@@ -28,45 +50,72 @@ Git è un *distributed version control system*
 
 
 ---
+class: less-padded-top
 layout: true
-# Centralized Version Control Systems (svn)
+## Centralized Version Control Systems (svn)
+
+---
+
 
 ---
 Vantaggi (rispetto a sistemi più primitivi)
+
+--
 - Ogni developer si riferisce alla stessa versione del progetto
+
+--
 - Ogni developer nel progetto ha un'idea del lavoro che stanno facendo gli altri
+
+--
 - Gli amministratori del progetto hanno controllo sulla repository
+
 
 ---
 Svantaggi (rispetto a VCS distribuiti)
-- Il server dove è hostata la repository è un single point of failure: 
-    - **va down** nessun download/upload di codice
-    - **necessita backup** altrimenti si potrebbe perdere tutta la storia del
-        progetto
-- Ogni developer, ogni volta che vorrà partecipare a un progetto, dovrà
-    downloadare **tutta** la repository alla versione corrente + modificare +
-    uploadare di nuovo
+
+--
+- Il server è un single point of failure →
+    * **va down**: nessun download/upload di codice
+    * **necessita backup**: rischio di perdere tutta la history del progetto
+
+--
+- Ogni developer dovrà sempre downloadare **tutta** la repository alla versione
+    corrente + modificare + uploadare di nuovo
 
 
 
 ---
 layout: true
-# Distributed VCS (git, mercurial)
+class: less-padded-top
+## Distributed VCS (git, mercurial)
 
 ---
 
+
+---
 Vantaggi
-- Ogni client è un mirror della repository
+
+--
+- Ogni client è un *mirror* della repository
+
+--
 - Clonare una repository clona *tutta* la sua storia
+
+--
 - Ogni client è un "backup" della repository → probabilità ~0 di perdere dati
+
+--
 - Quando si uploada/downloada codice, si muovono solo i cambiamenti
+
 
 ---
 Svantaggi
 
 
 --
-![](img/funny/not-a-single-one.jpg)
+.centered-image[
+![not-a-single-one](img/funny/not-a-single-one.jpg)
+]
 
 
 
@@ -78,14 +127,17 @@ Svantaggi
 ---
 layout: false
 class: concept-cover, middle, center
-# Architettura
+# Architettura di git
 
 
 ---
 ## Snapshot, non differenze
 
+--
 SVN → lista di cambiamenti applicati ai file.
 
+
+--
 Git → *snapshot* della repo: fotografie (mini filesystem) della repository in un
 certo momento.
 
@@ -106,11 +158,11 @@ class: middle, max-width-img
 ![](img/snapshots-4.png)
 
 
-
 ---
 ## Quasi tutte le operazioni sono locali
 
 Non si ha quasi mai bisogno della rete per svolgere operazioni.
+
 
 ---
 ## Git ha *integrity*
@@ -131,9 +183,12 @@ b858a87c07b04c4568f51b0dce655f78d73c02b3
 ---
 ## Git (quasi sempre) aggiunge solo dati
 
+--
 Ci sono poche operazioni (spesso sconsigliate/pericolose) che costringono git a
 *cancellare* dati.
 
+
+--
 In genere qualsiasi operazione (anche di cancellazione) **aggiunge** dati alla
 repository.
 
@@ -146,40 +201,30 @@ repository.
 
 ---
 class: center, middle, concept-cover
-# Stati dei file
-
-
+# Lifecycle di un file
 
 ---
-class: more-padded
-In una repository, i file possono trovarsi in tre *stati*:
-
---
-- **unmodified**
-
---
-- **non staged**
-
---
-- **staged**
-
---
-- **untracked**
-
-
+class: center, max-width-img, less-padded
+layout: true
+## Lifecycle di un file
 
 ---
-class: more-padded
-## Come cambio stato?
+![](img/file-lifecycle-1.png)
 
-- I file sono **untracked** quando li aggiungo nella repository
-- `git add [filename]` fa diventare `[filename]` staged (sia se era tracked che
-  untracked)
+---
+![](img/file-lifecycle-2.png)
 
-???
-Andare in `repos/file-states` e fare una demo di `git add` e di `git commit`.
-Ricordarsi di non usare `g` e `c`.
+---
+![](img/file-lifecycle-3.png)
 
+---
+![](img/file-lifecycle-4.png)
+
+---
+![](img/file-lifecycle-5.png)
+
+---
+![](img/file-lifecycle-6.png)
 
 
 
@@ -188,6 +233,7 @@ Ricordarsi di non usare `g` e `c`.
 <!-- Commit ------------------------------------------------------------------>
 
 ---
+layout: false
 class: middle, center, concept-cover
 # commit
 
@@ -208,8 +254,7 @@ class: center, middle
 
 
 
-
-
+<!-- Branching --------------------------------------------------------------->
 
 ---
 class: center, middle, concept-cover
@@ -227,108 +272,93 @@ della stessa repository parallelamente.
 
 
 
-
 ---
 class: center, middle
 ![wat](img/funny/wat.png)
 
 
 
-
 ---
 class: middle, center
+Di solito il branch principale si chiama `master`
+
 ![](img/branching-1.png)
-
-???
-Di solito il branch principale si chiama `master`.
-
 
 
 
 ---
 class: center, more-padded
+In ogni momento mi trovo in un branch: quello puntato da `HEAD`
 
-In ogni momento mi trovo in un branch: quello puntato da `HEAD`.
 ![](img/branching-2.1.png)
 
 ???
-`HEAD` è un puntatore a branch che indica a git su quale branch mi trovo.
-
 Committare in un branch significa mettere il commit puntato dal branch corrente
 come padre del nuovo commit e spostare il puntatore del branch sul nuovo commit.
 
 
 
-
 ---
 class: more-padded, center
-
 Ora branchamo per creare, ad esempio, una nuova feature:
+
 ![](img/branching-2.png)
 
 
 
-
 ---
+class: less-padded-top
+Avanziamo in `post-autosave` facendo due nuovi commit
+
 ![](img/branching-3.png)
 
-???
-Avanziamo in `post-autosave` facendo due nuovi commit.
-
-
 
 
 ---
+class: less-padded-top
+Bug report per un bug urgente: torniamo su `master`, branchamo e
+committiamo una volta nel branch `fix`
+
 ![](img/branching-4.png)
 
+
 ???
-Nel frattempo riceviamo un bug report che ci costringe a fixare un bug urgente.
-Torniamo su master, branchamo di nuovo e committiamo una volta nel branch `fix`.
-
-
+`post-autosave` e `fix` sono **diverging branches**.
 
 
 ---
-class: middle, center
-
-### `post-autosave` e `fix` sono **diverging branches**.
-
-
-
-
----
-class: max-width-img, center
-
+class: max-width-img, less-padded
 ## Merge di `fix` in `master`: fast-forward
-![](img/branching-5.png)
+
+Abbiamo finito in `fix`, vogliamo rendere disponibile il fix anche in `master`:
+
+.centered-image[
+![branching-5](img/branching-5.png)
+]
 
 ???
-Siamo soddisfatti del fix nel branch `fix`, ora vogliamo far sì che esso sia
-visibile anche in `master`.
+Ci spostiamo su `master` e mergiamo `fix`
 
-**Fast-forward** significa spostare il puntatore del branch
-in cui si mergia nel punto dove si trova il puntatore del branch che viene
-mergiato.
-
+**Fast-forward** significa spostare puntatore del branch → puntatore del branch
+che viene mergiato
 
 
 
 ---
-class: less-padded, max-width-img, middle
-![](img/branching-6.png)
-
-???
+class: max-width-img, middle
 Ora torniamo su `post-autosave` e facciamo un altro commit per finire
-la feature.
+la feature
 
+![branching-6](img/branching-6.png)
 
 
 
 ---
-class: max-width-img, more-padded
+class: max-width-img, less-padded
+Torniamo su `master` e mergiamo con `post-autosave`: git crea un nuovo **merge
+commit**.
 
-Torniamo su `master` e mergiamo con `post-autosave`. 
-![](img/branching-7.png)
+![branching-7](img/branching-7.png)
 
 ???
 Git trova l'antenato comune dei due commit e lo rende padre di un nuovo commit
@@ -337,159 +367,129 @@ che rappresenta il merge di branch che sono **diverged**.
 
 
 
----
-class: center, middle, concept-cover
 
+
+<!-- Remotes ----------------------------------------------------------------->
+
+---
+class: middle, center, concept-cover
 # Remotes
 
 
-
-
----
-Versioni di una repository che sono hostate su server remoti.
-
-
---
-Dal remote si può:
-
-- **clone**
-- **pull**
-- **push**
-
-???
-- **clone**: cloniamo la repository remota in locale (compresa tutta la storia
-  della repository)
-- **pull**: quando facciamo `git pull` dalla nostra repository locale
-  scarichiamo in locale tutti i cambiamenti avvenuti nella repository
-  dall'ultima volta che abbiamo pullato
-- **push**: uploadiamo i cambiamenti (commit) che abbiamo fatto in locale
-  (dall'ultimo push) sul server remoto
-
-
-
-
 ---
 class: middle, center
-# `origin`
-
-???
 Di solito il remote principale si chiama `origin`.
-I branch remoti vengono prifissati da `origin/`.
 
-
-
-
----
-class: middle, center, max-width-img
-
-![](img/remote-branches.png)
-
+I branch remoti vengono prifissati da `origin/`: `origin/master`, `origin/fix`.
 
 
 
 ---
 class: middle, center, max-width-img
+![remote-branches](img/remote-branches.png)
 
+
+
+---
+class: middle, max-width-img, less-padded-top
 # `push`/`pull`
 
-![](img/remote-branches-push-pull.png)
+- `push`: upload dei cambiamenti in locale su un remote
+- `pull`: download dei cambiamenti su un remote in locale
 
-???
-Sia pull che push sortiscono un effetto simile, ovvero spostare il puntatore
-`origin/master`.
-La differenza:
-- `pull`: sposta il puntatore locale `origin/master` dove esso si trova
-  effettivamente sul remote
-- `push`: sposta il puntatore `master` sul remote `origin` dove si trova il
-  puntatore `master` locale (e aggiorna `origin/master` in locale ovviamente)
-
+![remote-branches-push-pull](img/remote-branches-push-pull.png)
 
 
 
 ---
 class: middle, center
-
 ![](img/github-logo.png)
 
+È il più famoso hosting service che usa git come VCS.
+
 ???
-GitHub è il più famoso hosting service che usa git come VCS.
 
-È gratuito per progetti **open source**, mentre richiede un abbonamento mensile
-per hostare repository private.
+- gratuito per progetti **open source**
+- abbonamento per repository private
 
-È lo standard de facto per l'open source. È un modo fantastico di imparare git e
-allo stesso tempo imparare molto da progetti open source.
+È lo standard de facto per l'open source.
 
-### Piccola demo di GitHub
+### Piccola demo di GitHub (sito)
 
 - Andare sulla homepage
-- `dotfiles`: io su GH ci tengo tutte le configurazioni del mio computer (dove ho
-  400+ commits!)
+- `dotfiles`: io su GH ci tengo tutte le configurazioni del mio computer (dove
+    ho ~500 commits!)
 - `git-talk-ingegneria`: tutte le slide di questo seminario sono su GitHub
-
-È diventato talmente lo standard de facto che quando qualcuno dice che non hosta
-le sue repo su GitHub facciamo tutti questa faccia...
-
-
-
-
----
-class: middle, center
-
-![you-dont-use-github](img/funny/you-dont-use-github.gif)
-
 
 
 
 ---
 name: bitbucket-logo
 class: middle, center
-
 ![](img/bitbucket-logo.png)
 
+Simile a GitHub ma permette un numero limitato di repo *private*.
+
 ???
-BitBucket è molto simile a GitHub ma permette gratuitamente un numero limitato
-di repository private: probabilmente userete più spesso questo.
+Utile quando si sviluppano prodotti per un cliente dato che il codice non può
+essere reso open source per questioni di vulnerabilità/proprietà.
 
 
 
+
+
+
+<!-- Hands down -------------------------------------------------------------->
 
 ---
 class: center, middle, concept-cover
-
 # Hands down
 
-
-
----
-class: middle, center, command-cover
-`git clone` + `git remote`
-`git status`
-`git add`
-`git commit`
-`git commit --amend`
-`git push`
-`git pull`
-`git checkout` + `git branch`
-`git merge`
-`git stash`
-`git log`
-
-
-
 ???
-# Use case
+
+- `git init`
+- `git status`
+- `git add`
+- `git commit`
+- `git commit --amend`
+- `git push`
+- `git pull`
+- `git checkout` + `git branch`
+- `git merge`
+- `git clone` + `git remote`
+- `git stash`
+- `git log`
+
+# Per iniziare
+- andare in `repo/`
+- `mkdir awesome-app && cd awesome-app`
+- `vim greeter.js` e scriverci dentro:
+
+```javascript
+Greeter = (function () {
+  'use strict';
+
+  Greeter.prototype.hello = function (name) {
+    return ['Hello', name].join(' ');
+  };
+})();
+```
+
+### Use case di `stash`
 Siamo in `fix` con dei cambiamenti, vogliamo pullare `master`.
 - **stashamo** i cambiamenti
 - `git checkout master && git pull`
 - `git checkout fix`
 - `git stash apply`
 
----
-class: middle, center, command-cover
 
 
 
+
+
+
+
+<!-- Conclusion -------------------------------------------------------------->
 
 ---
 class: middle, center, concept-cover
@@ -500,17 +500,21 @@ Questi concetti sono avanzati, però vale la pena approfondirli.
 
 
 ---
-class: more-paddedd
-- `git rebase`
+class: more-padded, center
+`git rebase`
+
 
 --
-- Tags
+Tags
+
 
 --
-- `git reset [--hard|--soft]`
+`git reset [--hard|--soft]`
+
 
 --
-- Hooks
+Hooks
+
 
 ???
 Use case degli hooks: c'è un hook che permette di eseguire uno script ogni volta
@@ -518,12 +522,16 @@ che l'utente fa un commit. Combinato con un programmino che scatta foto con la
 webcam, si ottiene un **gitshot**. (continua)
 
 
+
 ---
-name: gitshots
-class: center
+class: middle, center
+name: questions
 
-450 commit - 3 mesi - 25 foto al secondo
+?
 
-<video controls>
-    <source src="gitshots.webm"/>
-</video>
+---
+class: max-width-img, center, middle
+## Grazie!
+
+![](img/thank-you.jpg)
+

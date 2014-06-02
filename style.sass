@@ -1,63 +1,74 @@
 @import fonts/fonts.css
 
 
-// Colors.
-$standout-bg: #849200
-$links: #776a99
-$git-command-cover-bg: #1C76DA
+// Variables.
+$concept-cover-bg: #0e9978
+$links-color: #776a99
+
+$body-font-size: 32px
+
+$inline-code-color: #445222
+$inline-code-font-size: 28px
+$code-font-size: 15px
+
+$sub-list-font-size: 22px
+
+$twitter-color: #55acee
+$gmail-color: #993329
+
 
 
 // Style the main dom elements.
 body
   font-family: 'Source Sans Pro'
 
-h1, h2, h3
-  font-family: 'Source Sans Pro'
-  font-weight: normal
-
-a, a:visited
-  color: $links
-  font-family: 'Source Sans Pro'
-  text-decoration: none
-
-
-// The generic slide.
-.remark-slide-content
-  font-size: 24px
-  padding: 3em
-
-// Code.
 .remark-code, .remark-inline-code
   font-family: 'Inconsolata-g', monospace
 
-.remark-code
-  font-size: 15px
+h1, h2, h3
+  font-weight: normal
 
-.remark-inline-code
-  li &, p &
-    font-size: 16px
-    color: #425987
-  h2 &
-    font-size: 40px
+a, a:visited
+  color: $links-color
+  text-decoration: none
 
+li
+  padding-top: 0.7em
+  p
+    margin: 0
+  li
+    font-size: $sub-list-font-size
 
 // Hide the slide number (bottom right).
 .remark-slide-number
   display: none
 
 
-// Custom classes.
 
-// The cover slide with a big git command in it.
-.git-command-cover
-  background: #435356
-  color: white
-  code
-    font-size: 100px
+// The generic slide.
+.remark-slide-content
+  font-size: $body-font-size
+  padding: 3em
+
+// Code.
+.remark-code
+  font-size: $code-font-size
+
+.remark-inline-code
+  li &, p &
+    font-size: $inline-code-font-size
+    color: $inline-code-color
+  h2 &
+    font-size: 40px
+
+
+
+
+// Custom classes.
 
 // The cover slide where we introduce a new concept.
 .concept-cover
-  background: $git-command-cover-bg
+  background: $concept-cover-bg
   color: white
   h1
     font-size: 120px
@@ -71,6 +82,12 @@ a, a:visited
     padding-top: 1em
     padding-bottom: 1em
 
+// Less padding on the top.
+.less-padded-top
+  padding: 1.5em 3em
+  h1, h2
+    margin-top: 0
+
 // A slide with more room for images and other stuff.
 .less-padded
   padding: 1em
@@ -82,14 +99,21 @@ a, a:visited
 
 
 // Per slide styles.
-#slide-installation-title
-  background: $standout-bg
-  color: white
-  h1
-    font-size: 115px
-
+.sha1
+  text-align: center
+  color: #a98eb9
+  font-size: $body-font-size - 2px
+  margin-top: 2.5em
+#slide-who-am-i
+  .email
+    color: $gmail-color
+  .twitter
+    color: $twitter-color
+  .email, .twitter, .github-username
+    padding: 0.4em
 #slide-bitbucket-logo
   background: #1f5182
+  color: white
 
 #slide-gitshots
   background: black
@@ -97,16 +121,23 @@ a, a:visited
   video
     width: 100%
 
-.sha1-intro
-  color: #946824
-  font-size: 35px
-  margin-top: 25%
+#slide-questions p
+  font-size: 415px
+  margin: 0
 
+.slide-cvcs-advantages-and-downsides p
+  margin: 0
+
+// Images.
 img[alt="git-logo"]
   width: 55%
-
 img[alt="single-commit"]
   width: 63%
-
 img[alt="you-dont-use-github"]
   width: 72%
+img[alt="branching-5"]
+  max-height: 72%
+img[alt="branching-6"], img[alt="branching-7"]
+  max-height: 100%
+.centered-image
+  text-align: center
