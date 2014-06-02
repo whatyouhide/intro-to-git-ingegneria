@@ -403,6 +403,8 @@ class: middle, center
 
 È il più famoso hosting service che usa git come VCS.
 
+[/whatyouhide](https://github.com/whatyouhide)
+
 ???
 
 - gratuito per progetti **open source**
