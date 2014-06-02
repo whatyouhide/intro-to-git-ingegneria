@@ -96,10 +96,12 @@ class: less-padded-top
 Vantaggi
 
 --
-- Ogni client è un *mirror* della repository
+- Ogni client è un *mirror* della repository (clonare significa clonare
+    **tutta** la history)
 
 --
-- Clonare una repository clona *tutta* la sua storia
+- Si può lavorare (committare) in locale e uploadare/dowloadare quando si ha una
+    connessione
 
 --
 - Ogni client è un "backup" della repository → probabilità ~0 di perdere dati
@@ -323,7 +325,10 @@ committiamo una volta nel branch `fix`
 
 
 ???
-`post-autosave` e `fix` sono **diverging branches**.
+Perché branchare invece di cambiare direttamente?
+
+Perché `master` potrebbe essere un branch che rappresenta un sito in produzione,
+o un branch scaricato da utenti ad esempio.
 
 
 ---
@@ -382,6 +387,8 @@ Di solito il remote principale si chiama `origin`.
 
 I branch remoti vengono prifissati da `origin/`: `origin/master`, `origin/fix`.
 
+Si possono avere più di un remote (es. `production`, `master`, `experimental`).
+
 
 
 ---
@@ -392,7 +399,7 @@ class: middle, max-width-img, less-padded-top
 - `pull`: download dei cambiamenti su un remote in locale
 
 ???
-Operazione chiave: si muove `origin/{branch}`: se pulliamo quello locale si
+Operazione chiave: si muove `origin/{branch}`. Se pulliamo quello locale si
 aggiorna a quello remoto, se pushamo quello remoto viene aggiornato a quello
 locale.
 
@@ -418,6 +425,8 @@ class: middle, center
 - `dotfiles`: io su GH ci tengo tutte le configurazioni del mio computer (dove
     ho ~500 commits!)
 - `git-talk-ingegneria`: tutte le slide di questo seminario sono su GitHub
+- **pull request** su gutfix (magari traduciamo il README in italiano e facciamo
+    gli spiritosi su sta cosa)
 
 
 
@@ -508,6 +517,10 @@ class: more-padded, center
 
 --
 `git reset [--hard|--soft]`
+
+
+--
+`git bisect`
 
 
 --
