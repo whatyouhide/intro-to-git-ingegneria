@@ -445,6 +445,28 @@ essere reso open source per questioni di vulnerabilità/proprietà.
 
 
 
+<!-- Stanchi? ---------------------------------------------------------------->
+
+---
+class: center, middle
+name: tired
+# Stanchi?
+
+???
+Vediamoci un paio di gif di leoni così ci svegliamo.
+
+---
+class: center, middle
+![lions](img/funny/lions-1.gif)
+
+---
+class: middle, center
+![lions](img/funny/lions-2.gif)
+
+
+
+
+
 
 <!-- Hands down -------------------------------------------------------------->
 
@@ -473,25 +495,6 @@ http://msysgit.github.io/
 ---
 class: center, middle, concept-cover
 # Demo
-
-???
-### Roba da scrivere in JS
-```javascript
-Greeter = (function () {
-  'use strict';
-
-  Greeter.prototype.hello = function (name) {
-    return ['Hello', name].join(' ');
-  };
-})();
-```
-
-### Use case di `stash`
-Siamo in `fix` con dei cambiamenti, vogliamo pullare `master`.
-- **stashamo** i cambiamenti
-- `git checkout master && git pull`
-- `git checkout fix`
-- `git stash apply`
 
 
 
