@@ -565,6 +565,16 @@ Domande?
 
 
 ---
+# Slides e repo del seminario
+
+### Slides
+## http://goo.gl/LcTHom
+
+### Repo
+### https://github.com/whatyouhide/git-talk-ingegneria
+
+
+---
 class: max-width-img, center, middle
 ## Grazie!
 
