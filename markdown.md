@@ -206,27 +206,27 @@ class: center, middle, concept-cover
 # Lifecycle di un file
 
 ---
-class: center, max-width-img, less-padded
+class: max-width-img, less-padded
 layout: true
 ## Lifecycle di un file
 
 ---
-![](img/file-lifecycle-1.png)
+![file-lifecycle](img/file-lifecycle-1.png)
 
 ---
-![](img/file-lifecycle-2.png)
+![file-lifecycle](img/file-lifecycle-2.png)
 
 ---
-![](img/file-lifecycle-3.png)
+![file-lifecycle](img/file-lifecycle-3.png)
 
 ---
-![](img/file-lifecycle-4.png)
+![file-lifecycle](img/file-lifecycle-4.png)
 
 ---
-![](img/file-lifecycle-5.png)
+![file-lifecycle](img/file-lifecycle-5.png)
 
 ---
-![](img/file-lifecycle-6.png)
+![file-lifecycle](img/file-lifecycle-6.png)
 
 
 
@@ -321,7 +321,7 @@ class: less-padded-top
 *Bug report* per un bug urgente: torniamo su `master`, branchamo e
 committiamo una volta nel branch `fix`
 
-![](img/branching-4.png)
+![](img/branching-5.png)
 
 
 ???
