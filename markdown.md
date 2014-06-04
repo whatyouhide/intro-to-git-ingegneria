@@ -32,7 +32,11 @@ class: center
 
 
 ???
-- **Survey**: quanti conoscono git?
+# Survey
+Prima di iniziare volevo fare un piccolo sondaggio:
+- quanti conoscono git
+- quanti sanno cosa vuol dire repository?
+- quanti sanno cosa vuol dire commit?
 
 --
 Git è un *distributed version control system*
@@ -538,6 +542,18 @@ Hooks
 Use case degli hooks: c'è un hook che permette di eseguire uno script ogni volta
 che l'utente fa un commit. Combinato con un programmino che scatta foto con la
 webcam, si ottiene un **gitshot**. (continua)
+
+
+
+---
+# Resources
+
+*Pro Git*, Scott Chacon (disponibile anche online su  
+http://git-scm.com/book)
+
+https://try.github.io (super beginner level)
+
+http://gitready.com/
 
 
 
