@@ -414,24 +414,15 @@ class: middle, center
 
 È il più famoso hosting service che usa git come VCS.
 
-[/whatyouhide](https://github.com/whatyouhide)
+https://github.com/
 
 ???
 
-- gratuito per progetti **open source**
-- abbonamento per repository private
+Gratuito per **open source**, abbonamento per repo private
 
-È lo standard de facto per l'open source.
-
-### Piccola demo di GitHub (sito)
-
-- Andare sulla homepage
-- `dotfiles`: io su GH ci tengo tutte le configurazioni del mio computer (dove
-    ho ~500 commits!)
-- `git-talk-ingegneria`: tutte le slide di questo seminario sono su GitHub
-- **pull request** su gutfix (magari traduciamo il README in italiano e facciamo
-    gli spiritosi su sta cosa)
-
+- Issues (il primo di `gutfix`)
+- Fork + pull request
+- Anche gli sconosciuti possono contribuire come abbiamo visto
 
 
 ---
@@ -500,6 +491,8 @@ http://msysgit.github.io/
 class: center, middle, concept-cover
 # Demo
 
+???
+# Vim è un editor!
 
 
 
@@ -554,6 +547,10 @@ http://git-scm.com/book)
 https://try.github.io (super beginner level)
 
 http://gitready.com/
+
+http://gitready.com/
+
+http://www.giyf.com/
 
 
 
