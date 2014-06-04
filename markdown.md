@@ -299,8 +299,7 @@ In ogni momento mi trovo in un branch: quello puntato da `HEAD`
 ![](img/branching-2.1.png)
 
 ???
-Committare in un branch significa mettere il commit puntato dal branch corrente
-come padre del nuovo commit e spostare il puntatore del branch sul nuovo commit.
+# HEAD è dove mi trovo ora
 
 
 
@@ -329,7 +328,7 @@ committiamo una volta nel branch `fix`
 
 
 ???
-Perché branchare invece di cambiare direttamente?
+# Perché branchare invece di cambiare direttamente?
 
 Perché `master` potrebbe essere un branch che rappresenta un sito in produzione,
 o un branch scaricato da utenti ad esempio.
@@ -346,7 +345,7 @@ Abbiamo finito in `fix`, vogliamo rendere disponibile il fix anche in `master`:
 ]
 
 ???
-Ci spostiamo su `master` e mergiamo `fix`
+# Mergiare vuol dire che i contenuti dei file vengono uniti
 
 **Fast-forward** significa spostare puntatore del branch → puntatore del branch
 che viene mergiato
@@ -403,6 +402,7 @@ class: middle, max-width-img, less-padded-top
 - `pull`: download dei cambiamenti su un remote in locale
 
 ???
+# Quando pullo i file locali vengono modificati come in un merge!
 Operazione chiave: si muove `origin/{branch}`. Se pulliamo quello locale si
 aggiorna a quello remoto, se pushamo quello remoto viene aggiornato a quello
 locale.
