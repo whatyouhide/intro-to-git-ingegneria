@@ -1,4 +1,4 @@
-### Configurazione di nome e email.
+git init### Configurazione di nome e email.
 
     git config --global user.name "Andrea Leopardi"
     git config --global user.email an.leopardi@gmail.com
